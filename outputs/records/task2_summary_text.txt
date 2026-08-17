@@ -1,0 +1,3 @@
+Image: train_062
+
+In train_062, Otsu segmentation detected 22 objects. Object areas range from 72 to 533 pixels (mean 227, median 178). Mean eccentricity is 0.69 (0=circular, 1=elongated); mean solidity is 0.95 (1=convex/solid boundary); mean extent is 0.71 (area / bounding-box area). Mean object intensity is 0.252.

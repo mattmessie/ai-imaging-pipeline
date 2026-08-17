@@ -1,0 +1,24 @@
+Repeated-run variability check
+Image: train_062.png, model: llama3.2-vision, temperature=0.8, n_runs=3
+
+All runs identical: False
+
+--- Run 1 ---
+{
+  "modality": "fluorescence microscopy",
+  "tissue_type": "uncertain",
+  "notable_features": "Several bright blue spots of varying sizes are visible against a black background.",
+  "image_quality": "good"
+}
+
+--- Run 2 ---
+{ "modality": "fluorescence", "tissue_type": "uncertain", "notable_features": "Several bright blue spots are visible in the image.", "image_quality": "good" }
+
+--- Run 3 ---
+{
+  "modality": "uncertain",
+  "tissue_type": "uncertain",
+  "notable_features": "The image is extremely dark, and there are several bright blue spots of varying sizes and shapes.",
+  "image_quality": "poor"
+}
+

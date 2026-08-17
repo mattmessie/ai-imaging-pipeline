@@ -1,0 +1,9 @@
+numpy
+pandas
+matplotlib
+scikit-image
+scipy
+torch
+torchvision
+ollama
+pytest
