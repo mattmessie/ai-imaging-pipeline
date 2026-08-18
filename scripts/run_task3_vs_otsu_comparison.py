@@ -125,12 +125,13 @@ def main():
     print(f"Mean IoU  -- Otsu: {comparison['otsu_iou'].mean():.4f}, U-Net: {comparison['unet_iou'].mean():.4f}")
     print(f"U-Net better Dice on {comparison['unet_better_dice'].sum()}/12 images")
 
-    # Pick one clear example of each, based on pixel-level Dice (the
-    # meaningful comparison -- see note above on why object counts alone
-    # aren't a fair comparison here).
-    unet_wins = comparison.sort_values("otsu_dice", ascending=True).iloc[0]  # Otsu's worst Dice
-    otsu_candidates = comparison[comparison["otsu_dice"] >= comparison["unet_dice"]]
-    otsu_wins = otsu_candidates.sort_values("otsu_dice", ascending=False).iloc[0] if len(otsu_candidates) else comparison.sort_values("unet_dice").iloc[0]
+    # Pick one clear example of each, based on the pixel-level Dice
+    # MARGIN between the two methods (the actual meaningful comparison --
+    # not just "Otsu's absolute worst image", which can pick a case where
+    # the margin itself is tiny even though Otsu's raw score is low).
+    comparison["dice_margin"] = comparison["unet_dice"] - comparison["otsu_dice"]
+    unet_wins = comparison.sort_values("dice_margin", ascending=False).iloc[0]  # largest U-Net advantage
+    otsu_wins = comparison.sort_values("dice_margin", ascending=True).iloc[0]   # largest Otsu advantage (or smallest U-Net one)
 
     print(f"\nBiggest U-Net win (pixel Dice): {unet_wins['image_id']} "
           f"(Otsu Dice={unet_wins['otsu_dice']:.3f}, U-Net Dice={unet_wins['unet_dice']:.3f})")
