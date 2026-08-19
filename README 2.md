@@ -79,7 +79,7 @@ ollama pull llama3.2-vision
 ollama pull llama3.2
 ```
 
-## ⚠️ Important: known Ollama bug affecting `llama3.2-vision`
+## Important: known Ollama bug affecting `llama3.2-vision`
 
 **As of Ollama v0.30.0 (May 2026), the `mllama` architecture that
 `llama3.2-vision` needs was dropped from Ollama's new inference engine and
