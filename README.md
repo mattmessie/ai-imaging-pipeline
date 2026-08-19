@@ -92,20 +92,37 @@ during development of this project, both giving:
 error loading model: unknown model architecture: 'mllama'
 ```
 
-**If `ollama --version` reports 0.30.0 or later and Task 1's VLM step
-fails with this error, that's why — not a bug in this code.** Two fixes:
+**This was independently confirmed by the module tutor.** An email from
+Nickolay Korabel to the cohort states: *"If you encounter any issues when
+using the llama3.2-vision model for assignment 3 (e.g. an 'unknown model
+architecture: mllama' error), you can use an alternative model instead
+(e.g. Qwen2.5-VL/Qwen3-VL or ministral-3:14b vision model), or use the
+llama3.2-vision model in Colab (see Lab 2 notebook for details)."* This
+matches the diagnosis and the Colab workaround below exactly, and was
+reached independently before that email was received.
 
-1. **Downgrade Ollama** to a pre-0.30.0 release (e.g. `v0.22.1`, a
+**If `ollama --version` reports 0.30.0 or later and Task 1's VLM step
+fails with this error, that's why — not a bug in this code.** Fixes, in
+order of preference for this project:
+
+1. **Use `colab/Task1_VLM_Colab.ipynb`** (the approach actually used to
+   produce this project's real Task 1 results), which installs its own
+   pinned Ollama server inside a disposable Colab runtime and doesn't
+   touch your local install at all. Upload it to
+   [colab.research.google.com](https://colab.research.google.com),
+   Runtime → Run all, upload the representative image when prompted, and
+   the required output files download automatically at the end.
+2. **Or downgrade Ollama** to a pre-0.30.0 release (e.g. `v0.22.1`, a
    confirmed stable release from before the regression):
    ```bash
    curl -fsSL https://ollama.com/install.sh | OLLAMA_VERSION=0.22.1 sh
    ```
-2. **Or use `colab/Task1_VLM_Colab.ipynb`**, which installs its own pinned
-   Ollama server inside a disposable Colab runtime and doesn't touch your
-   local install at all. Upload it to
-   [colab.research.google.com](https://colab.research.google.com),
-   Runtime → Run all, upload the representative image when prompted, and
-   the required output files download automatically at the end.
+3. **Or swap in an alternative vision model** the tutor's email names as
+   acceptable (Qwen2.5-VL/Qwen3-VL, ministral-3:14b) by changing
+   `VLM_MODEL` in `src/imaging_pipeline/config.py` and re-pulling that
+   model via Ollama — not used for this project's actual submitted
+   results (Colab with the real `llama3.2-vision` was used instead), but
+   a valid fallback per the tutor's guidance if needed.
 
 This only affects `llama3.2-vision` (the Task 1 multimodal step). The
 text-only model `llama3.2` (Tasks 2 and 4) is unaffected and runs
