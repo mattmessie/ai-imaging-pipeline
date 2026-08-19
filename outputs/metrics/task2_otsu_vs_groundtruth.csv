@@ -1,0 +1,13 @@
+image_id,density,ground_truth_n_objects,otsu_n_objects,difference
+test_000,sparse,8,8,0
+test_001,normal,19,14,-5
+test_002,normal,31,26,-5
+test_003,normal,21,19,-2
+test_004,dense,75,42,-33
+test_005,clustered,49,15,-34
+test_006,sparse,8,8,0
+test_007,normal,30,23,-7
+test_008,normal,28,23,-5
+test_009,normal,24,21,-3
+test_010,dense,78,36,-42
+test_011,clustered,30,19,-11

@@ -1,0 +1,44 @@
+Representative image: train_062.png
+Model: llama3.2-vision
+
+======================================================================
+NAIVE PROMPT
+======================================================================
+What is in this image?
+
+--- Response ---
+The image shows a microscopic view of cells stained with a fluorescent dye, specifically DAPI (4',6-diamidino-2-phenylindole), which is commonly used to visualize and count cells in a sample. The blue color indicates that the cells are stained with DAPI, which binds to the DNA of the cells, causing them to fluoresce under ultraviolet (UV) light.
+
+The image shows a cluster of cells, likely from a tissue sample or a cell culture, with the DAPI staining highlighting the nuclei of the cells. The nuclei appear as bright blue dots, indicating that the cells are actively dividing or have recently divided. The surrounding cytoplasm is not stained, which suggests that the cells are in a state of rapid growth or proliferation.
+
+The image is likely from a research or clinical setting, where the cells are being studied or analyzed for various purposes, such as understanding cell biology, identifying cell types, or monitoring cell growth and proliferation. The use of DAPI staining allows researchers to visualize and quantify the number of cells in a sample, which is important for many applications in cell biology and medicine.
+
+======================================================================
+OPTIMISED PROMPT
+======================================================================
+You are a scientific image-cataloguing assistant helping annotate microscopy images for a research dataset.
+
+You are NOT a diagnostic tool. Do not provide any clinical, diagnostic, or disease-related interpretation, even if asked. Describe only what is visually present, in purely observational terms (shapes, brightness, spatial arrangement, apparent density, texture).
+
+Respond with a JSON object with EXACTLY these four fields, and nothing else:
+{
+  "modality": "<imaging modality if visually identifiable, else \"uncertain\">",
+  "tissue_type": "<general sample/tissue type if identifiable, else \"uncertain\">",
+  "notable_features": "<one short factual sentence on visually notable features>",
+  "image_quality": "<one of: good, moderate, poor>"
+}
+
+If you are not confident about a field, write "uncertain" for that field rather than guessing. Respond with ONLY the JSON object -- no preamble, no explanation, no markdown code fences.
+
+--- Raw response ---
+{
+  "modality": "fluorescence",
+  "tissue_type": "uncertain",
+  "notable_features": "There are several bright blue spots scattered throughout the image.",
+  "image_quality": "good"
+}
+
+--- Parsed JSON record ---
+{'modality': 'fluorescence', 'tissue_type': 'uncertain', 'notable_features': 'There are several bright blue spots scattered throughout the image.', 'image_quality': 'good'}
+
+Valid (all 4 required fields present): True

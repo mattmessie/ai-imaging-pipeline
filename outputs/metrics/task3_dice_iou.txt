@@ -1,0 +1,17 @@
+U-Net training (base=16, 10 epochs, combined BCE+Dice loss, Adam lr=1e-3)
+Parameter count: 483,153
+
+Final validation Dice: 0.9840
+Final validation IoU:  0.9686
+
+Per-epoch history:
+  Epoch  1: train_loss=1.3058, val_loss=1.4914, val_dice=0.8589
+  Epoch  2: train_loss=1.1408, val_loss=1.3667, val_dice=0.9465
+  Epoch  3: train_loss=1.0822, val_loss=1.1948, val_dice=0.9246
+  Epoch  4: train_loss=1.0334, val_loss=1.0461, val_dice=0.9269
+  Epoch  5: train_loss=0.9854, val_loss=0.9301, val_dice=0.8999
+  Epoch  6: train_loss=0.9333, val_loss=0.8382, val_dice=0.9450
+  Epoch  7: train_loss=0.8808, val_loss=0.8039, val_dice=0.9640
+  Epoch  8: train_loss=0.8477, val_loss=0.8191, val_dice=0.9791
+  Epoch  9: train_loss=0.8129, val_loss=0.7941, val_dice=0.9896
+  Epoch 10: train_loss=0.7796, val_loss=0.7593, val_dice=0.9840
